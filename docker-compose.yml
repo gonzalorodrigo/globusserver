@@ -1,35 +1,21 @@
-version: '2.0'
+version: '3.0'
 
 services:
   globus:
-    build: .
-  #  volumes:
-#      - ./files_storage:/tmp/files_storage
- #     - .:/code
- #     - ./remoteshelloverfs/shared:/shared
- #     - ./import_images:/tmp/ncem_images
- #     - ./preview_images:/tmp/preview_images
+    build:
+      context: .
+    hostname: "${SHORT_HOSTNAME}"
+    domainname: "${DOMAIN_NAME}"
     ports:
-      - "8000:8000"
- #   depends_on:
- #     - db
- #   environment:
- #     - FILE_SHELL_COMMANDS=/shared/command.txt
- #     - FILE_SHELL_OUTPUT=/shared/output.txt
- #     - FILE_SHELL_DIR=/code/remoteshelloverfs
- #     - FILE_SHELL_ENABLE=1gonzalo-pro:dtndocker gonzalo$
-
-  #grid-ftp1:
-    #build: ./gftp
-#    volumes:
-#      - ./files_storage:/data
-#    ports:
-#      - "192.168.56.1:2811:2811"
-#      - "192.168.56.1:50000-51000:50000-51000"
-#  grid-ftp2:
-#    build: ./gftp
-#    volumes:
-#      - ./files_storage:/data
-#    ports:
-#      - "192.168.57.1:2811:2811"
-#      - "192.168.57.1:50000-51000:50000-51000"
+      - "2811:2811"
+      - "50000-50010:50000-50010"
+      - "7512:7512"
+      - "443:443"
+    command: ["./entry_point.sh"]
+    environment:
+      - GLOBUS_USER
+      - GLOBUS_PASSWORD
+      - SHORT_HOSTNAME
+      - HOSTNAME
+      - GLOBUS_ACTIVATE_USER
+      - GLOBUS_ACTIVATE_PASSWORD

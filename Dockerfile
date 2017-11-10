@@ -6,3 +6,7 @@ RUN apt-get update
 RUN apt-get -y install ntp
 RUN mkdir -p /var/lib/globus/simple_ca
 RUN apt-get -y install globus-connect-server
+#RUN echo "HI! $GLOBUS_USER"
+
+ENV TERM xterm
+ADD ./entry_point.sh .
