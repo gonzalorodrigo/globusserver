@@ -5,6 +5,9 @@ annd will use GLOBUS_ACTIVATE_USER as the activation user from the Globus
 central system (Activation must done in the control panel of GLOBUS_USER
 in the Globus website).
 
+Every time that the server is re-deployed, it needs to be reactivated, this 
+can be avoided by giving persistance to some of the globus files.
+
 # Deployment
 
 Server requires a number of environment vars to be set before running.
