@@ -1,0 +1,35 @@
+version: '2.0'
+
+services:
+  globus:
+    build: .
+  #  volumes:
+#      - ./files_storage:/tmp/files_storage
+ #     - .:/code
+ #     - ./remoteshelloverfs/shared:/shared
+ #     - ./import_images:/tmp/ncem_images
+ #     - ./preview_images:/tmp/preview_images
+    ports:
+      - "8000:8000"
+ #   depends_on:
+ #     - db
+ #   environment:
+ #     - FILE_SHELL_COMMANDS=/shared/command.txt
+ #     - FILE_SHELL_OUTPUT=/shared/output.txt
+ #     - FILE_SHELL_DIR=/code/remoteshelloverfs
+ #     - FILE_SHELL_ENABLE=1gonzalo-pro:dtndocker gonzalo$
+
+  #grid-ftp1:
+    #build: ./gftp
+#    volumes:
+#      - ./files_storage:/data
+#    ports:
+#      - "192.168.56.1:2811:2811"
+#      - "192.168.56.1:50000-51000:50000-51000"
+#  grid-ftp2:
+#    build: ./gftp
+#    volumes:
+#      - ./files_storage:/data
+#    ports:
+#      - "192.168.57.1:2811:2811"
+#      - "192.168.57.1:50000-51000:50000-51000"
