@@ -19,3 +19,5 @@ services:
       - HOSTNAME
       - GLOBUS_ACTIVATE_USER
       - GLOBUS_ACTIVATE_PASSWORD
+    volumes:
+      - ./ex:/tmp/ex

@@ -10,3 +10,4 @@ RUN apt-get -y install globus-connect-server
 
 ENV TERM xterm
 ADD ./entry_point.sh .
+ADD ./globus-connect-server.conf /etc/.
