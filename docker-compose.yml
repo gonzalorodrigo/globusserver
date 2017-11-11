@@ -20,6 +20,7 @@ services:
       - GLOBUS_ACTIVATE_USER
       - GLOBUS_ACTIVATE_PASSWORD
       - GLOBUS_PERSISTENT
+      - GLOBUS_DATA_DIR
     volumes:
       - ./globus_state:/globus_state
-      - ./data:/data
+      - ${GLOBUS_DATA_DIR}:/data
