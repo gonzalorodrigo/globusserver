@@ -18,7 +18,7 @@ globus_state_file="${globus_state_dir}/${globus_state_file_name}"
 
 clean_close() {
   echo "Gracefully stopping the server"
-  if [ "$GLOBUS_PERSISTENT" = 1 ]
+  if [ "$GLOBUS_PERSISTENT" == "1" ]
   then
     echo "Making copy of globus state, copying into ${globus_state_file}"
     tar -cvzf "${globus_state_file}" /var/lib/globus  \
@@ -35,7 +35,7 @@ echo "Creating activation user"
 useradd -ms /bin/bash "${GLOBUS_ACTIVATE_USER}"
 echo ""${GLOBUS_ACTIVATE_USER}":"${GLOBUS_ACTIVATE_PASSWORD}"" | chpasswd
 echo "Configuring globus"
-if [ -f "$globus_state_file" ] && [ "$GLOBUS_PERSISTENT" = 1 ]
+if [ -f "$globus_state_file" ] && [ "$GLOBUS_PERSISTENT" == "1" ]
 then
   echo "Restoring Globus state"
   tar -xvzf "${globus_state_file}"
