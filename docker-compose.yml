@@ -8,7 +8,7 @@ services:
     #domainname: "${DOMAIN_NAME}"
     ports:
       - "2811:2811"
-      - "50000-50100:50000-50100"
+      - "50000-51000:50000-51000"
       - "7512:7512"
       - "443:443"
     command: ["./entry_point.sh"]
@@ -20,7 +20,6 @@ services:
       - GLOBUS_ACTIVATE_USER
       - GLOBUS_ACTIVATE_PASSWORD
       - GLOBUS_PERSISTENT
-      - PUBLIC_IP
     volumes:
       - ./globus_state:/globus_state
       - ./data:/data
