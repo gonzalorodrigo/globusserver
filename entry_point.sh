@@ -16,21 +16,30 @@ globus_state_file_name="globus_state.tar.gz"
 globus_state_dir="/globus_state"
 globus_state_file="${globus_state_dir}/${globus_state_file_name}"
 
+clean_close() {
+  echo "Gracefully stopping the server"
+  if [ "$GLOBUS_CREATE_STATE_COPY" = 1 ]
+  then
+    echo "Making copy of globus state, copying into ${globus_state_file}"
+    tar -cvzf "${globus_state_file}" /var/lib/globus  \
+  /var/lib/globus-connect-server /var/lib/myproxy /var/lib/myproxy-oauth
+    echo "Copy completed"
+  fi
+  echo "done!"
+  exit 0
+}
+
+trap "clean_close" SIGTERM SIGINT
+
 echo "Creating activation user"
 useradd -ms /bin/bash "${GLOBUS_ACTIVATE_USER}"
 echo ""${GLOBUS_ACTIVATE_USER}":"${GLOBUS_ACTIVATE_PASSWORD}"" | chpasswd
 echo "Configuring globus"
-if [ "$GLOBUS_CREATE_STATE_COPY" != 1 ] &&  [ -f "$globus_state_file" ]
+if [ -f "$globus_state_file" ]
 then
   echo "Restoring Globus state"
   tar -xvzf "${globus_state_file}"
 fi
 globus-connect-server-setup
-if [ "$GLOBUS_CREATE_STATE_COPY" = 1 ]
-then
-  echo "Making copy of globus state, copying into ${globus_state_file}"
-  tar -cvzf "${globus_state_file}" /var/lib/globus  \
-/var/lib/globus-connect-server /var/lib/myproxy /var/lib/myproxy-oauth
-fi
 echo "All done... Server running"
 sleep infinity
