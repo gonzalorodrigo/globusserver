@@ -6,7 +6,6 @@ RUN apt-get update
 RUN apt-get -y install ntp
 RUN mkdir -p /var/lib/globus/simple_ca
 RUN apt-get -y install globus-connect-server
-#RUN echo "HI! $GLOBUS_USER"
 
 RUN mkdir -p /globus_state
 RUN mkdir -p /data
