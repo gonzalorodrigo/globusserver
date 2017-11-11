@@ -19,3 +19,7 @@ services:
       - HOSTNAME
       - GLOBUS_ACTIVATE_USER
       - GLOBUS_ACTIVATE_PASSWORD
+      - GLOBUS_CREATE_STATE_COPY
+    volumes:
+      - ./globus_state:/globus_state
+      - ./data:/data
