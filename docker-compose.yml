@@ -19,5 +19,7 @@ services:
       - HOSTNAME
       - GLOBUS_ACTIVATE_USER
       - GLOBUS_ACTIVATE_PASSWORD
+      - GLOBUS_PERSISTENT
     volumes:
-      - ./ex:/tmp/ex
+      - ./globus_state:/globus_state
+      - ./data:/data
