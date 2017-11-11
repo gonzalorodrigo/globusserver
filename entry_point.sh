@@ -35,7 +35,7 @@ echo "Creating activation user"
 useradd -ms /bin/bash "${GLOBUS_ACTIVATE_USER}"
 echo ""${GLOBUS_ACTIVATE_USER}":"${GLOBUS_ACTIVATE_PASSWORD}"" | chpasswd
 echo "Configuring globus"
-if [ -f "$globus_state_file" ] and [ "$GLOBUS_PERSISTENT" = 1 ]
+if [ -f "$globus_state_file" ] && [ "$GLOBUS_PERSISTENT" = 1 ]
 then
   echo "Restoring Globus state"
   tar -xvzf "${globus_state_file}"
