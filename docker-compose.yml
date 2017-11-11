@@ -20,7 +20,7 @@ services:
       - GLOBUS_ACTIVATE_USER
       - GLOBUS_ACTIVATE_PASSWORD
       - GLOBUS_PERSISTENT
-      - PUBLIC_ID
+      - PUBLIC_IP
     volumes:
       - ./globus_state:/globus_state
       - ./data:/data
