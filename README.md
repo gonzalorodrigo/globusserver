@@ -29,16 +29,17 @@ Use "docker-compose down" for graceful stop.
 These are the username and password of the globus account to which this server
 will associate.
 
-#### PUBLIC_HOSTNAME SHORT_HOSTNAME DOMAIN_NAME
+#### PUBLIC_HOSTNAME PUBLIC_IP SHORT_HOSTNAME DOMAIN_NAME
 
 They capture the hostname of the new Globus connect server. For example
 if the server full hostname is "myserver.mydomain.com", these variables
 should be set to:
 
 ~~~
-PUBLIC_HOSTNAME="myserver.mydomain.com"
-SHORT_HOSTNAME="myserver"
-DOMAIN_NAME="mydomain.com"
+export PUBLIC_HOSTNAME="myserver.mydomain.com"
+export  SHORT_HOSTNAME="myserver"
+export  DOMAIN_NAME="mydomain.com"
+export  PUBLIC_IP=`getent hosts $PUBLIC_HOSTNAME | awk '{ print $1 }'`
 ~~~
 This info must be valid and corresponding to the DNS information of the server.
 #### GLOBUS_ACTIVATE_USER GLOBUS_ACTIVATE_PASSWORD
