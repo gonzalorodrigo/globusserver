@@ -75,9 +75,23 @@ as long as the same credentials are used in the activation.
 
 For more details read the [Globus docs](https://docs.globus.org/globus-connect-server-installation-guide/).
 
+#### MTU
+MTu of the network interface of the container can be set by exporting:
+~~~
+export MTU=9000
+~~~
+IMPORTANT: the Docker installation must be configured to accept large MTU values,
+this is done by modifying the /etc/docker/daemon.json file, setting or adding the MTU
+property:
+~~~
+{
+  "mtu": 9000
+}
+~~~
+
 ### Deployment example
 ~~~
-export GLOBUS_USER="globus_user_witho_@globusid.org"
+export GLOBUS_USER="globus_user_WITHOUT_@globusid.org"
 export GLOBUS_PASSWORD="globus_password"
 export SHORT_HOSTNAME="thehostname"
 export PUBLIC_HOSTNAME="thehostname.domain.org"

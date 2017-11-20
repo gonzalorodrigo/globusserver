@@ -3,7 +3,7 @@
 # Example script to run globus connect server.
 #
 
-export GLOBUS_USER="globus_user_witho_@globusid.org"
+export GLOBUS_USER="globus_user_WITHOUT_@globusid.org"
 export GLOBUS_PASSWORD="globus_password"
 export SHORT_HOSTNAME="thehostname"
 export PUBLIC_HOSTNAME="thehostname.domain.org"
