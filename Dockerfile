@@ -8,8 +8,8 @@ RUN mkdir -p /var/lib/globus/simple_ca
 RUN apt-get -y install globus-connect-server
 
 RUN mkdir -p /globus_state
-RUN mkdir -p /data
-ENV GLOBUS_DATA_DIR="/data"
+ARG GUEST_GLOBUS_DATA_DIR
+RUN mkdir -p ${GUEST_GLOBUS_DATA_DIR}
 ENV TERM xterm
 ADD ./entry_point.sh .
 ADD ./globus-connect-server.conf /etc/.

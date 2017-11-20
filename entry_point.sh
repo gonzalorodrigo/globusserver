@@ -33,7 +33,7 @@ trap "clean_close" SIGTERM SIGINT
 
 echo "Creating activation user"
 useradd -ms /bin/bash "${GLOBUS_ACTIVATE_USER}"
-chown "${GLOBUS_ACTIVATE_USER}" "${GLOBUS_DATA_DIR}"
+chown "${GLOBUS_ACTIVATE_USER}" /data
 echo ""${GLOBUS_ACTIVATE_USER}":"${GLOBUS_ACTIVATE_PASSWORD}"" | chpasswd
 echo "Configuring globus"
 if [ -f "$globus_state_file" ] && [ "$GLOBUS_PERSISTENT" == "1" ]
