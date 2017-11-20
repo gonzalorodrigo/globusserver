@@ -7,10 +7,10 @@ services:
       args:
         GUEST_GLOBUS_DATA_DIR: ${GUEST_GLOBUS_DATA_DIR}
     ports:
-      - "2811:2811"
-      - "${GRIDFTP_PORTS_LOW}-${GRIDFTP_PORTS_HIGH}:${GRIDFTP_PORTS_LOW}-${GRIDFTP_PORTS_HIGH}"
-      - "7512:7512"
-      - "443:443"
+      - "${GRIDFTP_IP}:2811:2811"
+      - "${GRIDFTP_IP}:${GRIDFTP_PORTS_LOW}-${GRIDFTP_PORTS_HIGH}:${GRIDFTP_PORTS_LOW}-${GRIDFTP_PORTS_HIGH}"
+      - "${PUBLIC_IP}:7512:7512"
+      - "${PUBLIC_IP}:443:443"
     command: ["./entry_point.sh"]
     environment:
       - GLOBUS_USER
@@ -24,6 +24,12 @@ services:
       - GUEST_GLOBUS_DATA_DIR
       - GRIDFTP_PORTS_LOW
       - GRIDFTP_PORTS_HIGH
+      - GRIDFTP_IP
     volumes:
       - ./globus_state:/globus_state
       - ${HOST_GLOBUS_DATA_DIR}:${GUEST_GLOBUS_DATA_DIR}
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 9000
