@@ -15,7 +15,7 @@ This variables can be set in the enviroment before starting the services
 or in the .env file.
 
 An example of how to set this variables is provided in the
-exmaple_start_server.sh file.
+example_start_server.sh file.
 
 
 ### Persistence
